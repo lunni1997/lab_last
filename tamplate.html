@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+  <div class="modal-window">
+        <div class="headers">
+		 <span class="title">About the hotel</span>
+          <a href="#/"><img class="close" src="img/exit.png" /></a>
+        </div>
+        <div class="property">
+          <img class="photo" ng-src="{{ data[indx].img_url }}"/>
+         
+          <ul>
+            <li><span class="bathroom">{{ data[indx].bathroom_number }}</span> bathroom</li>
+            <li><span class="bedroom">{{ data[indx].bedroom_number }}</span> bedroom</li>
+            <li>Property type: <span class="type">{{ data[indx].property_type }}</span></li>
+			 <li>Price: <span class="price">{{ data[indx].price_formatted }}</span></li>
+			  <li>Room number: <span>{{ data[indx].room_number }}</span></li>
+			   <li>Commission: <span>{{ data[indx]. commission }}</span></li>
+			 
+          </ul>
+          <div id="map" class="map">
+
+          </div>
+        </div>
+  </div>
+

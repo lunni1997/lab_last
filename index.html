@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Заказ отелей</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+	<script type="text/javascript" src="script/script.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://code.angularjs.org/1.4.7/angular-route.min.js" type="text/javascript"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1Mj2zIR3yLj2IqqLnkS3gp2k0_xg4TZA" async defer></script>
+	
+	
+</head>
+<body>
+	<div  ng-controller="mainCotroller">
+	  <div class="filters">
+        <form >
+
+          <label>Price min: <input type="number" name="price_min" placeholder="0" > </label>
+          <label>Price max: <input type="number" name="price_max" placeholder="999999"> </label>
+          <hr>
+          <label>Bedrooms min: <input type="number" name="bedroom_min" placeholder="0"></label>
+          <label>Bedrooms max: <input type="number" name="bedroom_max" placeholder="999999"></label>
+          <hr>
+          <label>Rooms min: <input type="number" name="room_min" placeholder="0"> </label>
+          <label>Rooms max: <input type="number" name="room_max" placeholder="999999"> </label>
+          <hr>
+          <label>Bathroom min: <input type="number" name="bathroom_min" placeholder="0"></label>
+          <label>Bathroom max: <input type="number" name="bathroom_max" placeholder="999999"></label>
+
+        </form>
+      </div>
+		<div class="header">
+<div class="header-wraper">
+<a href="/">
+<img class="logo" src="img/Logo.png" alt="hotel.by" >
+</a>
+</div>			
+
+		</div>
+	<div class="main">
+	
+	<div class="search">
+
+<div class="select" >		
+<select name="country" class="country" id="country">
+	<option value="uk">UK</option>
+	<option value="fr">France</option>
+	<option value="pl">Polska</option>
+	<option value="es">Espana</option>
+    <option value="br">Brasil</option>
+    <option value="mx">Mexico</option>
+    <option value="in">India</option>
+    <option value="pe">Peru</option>
+    <option value="au">Australia</option>
+    <option value="ph">Philippines</option>
+    <option value="de">Deutschland</option>
+    <option value="ch">Chile</option>
+</select>
+<input type="text" name="city" id="city" class="city" placeholder="London">
+
+</div>
+
+<div class="like_bar">
+<div ng-click="Search()" class="find"></div>
+<div ng-click="like()" class="like"></div>
+</div>
+
+
+
+	</div>
+		<div class="content">
+			
+ <div class="items" ng-repeat="dt in data">
+      <a href="#{{ $index }}">
+        <div class="listing-list" >
+          <img  ng-src="{{dt.img_url}}">
+          <span class="price">{{ dt.price_formatted }}</span><br>
+          <span class="title">{{ dt.title }}</span><br>
+          <span class="summary">{{ dt.summary }}</span><br>
+          <span class="updated">{{ dt.updated_in_days_formatted }}</span>
+        </div>
+      </a>
+        <div class="like"  ng-click="liked($event)" name="{{ $index }}">
+    </div>
+		</div>
+		<div class="localStorage">
+    </div>
+	  <div id="page">
+        <div id="page_text" class="row">
+          <button class="btn " ng-click="Back()">Назад</button>
+          <span>{{currentPage}} из {{total_pages}}</span>
+          <button class="btn " ng-click="Next()"  >Вперед</button>
+        </div>
+      </div> 
+	</div>
+		 <div ng-view></div>
+	</main>
+
+	<div>
+
+</body>
+</html>
